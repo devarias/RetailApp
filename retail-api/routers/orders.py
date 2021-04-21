@@ -10,6 +10,68 @@ from schemas.order_schema import OrderModel
 router = APIRouter(prefix="/orders", tags=['Orders'])
 
 
+def get_one(id_):
+    """ This method is to request a single order ids separated
+        by id.
+
+        Args:
+            id ([str]): [order id]
+
+        Returns:
+            [List]: [the information about the order requested]
+        """
+    order = storage.one('Order', id_)
+    user = storage.one('User', order.user_id)
+    shipping = storage.one('Shipping', order.shipping_id)
+    country = storage.one('Country', shipping.country_id)
+    payments = storage.all('Payment')
+    payment_list = []
+    if payments is not None:
+        for payment in payments:
+            if str(payment.order_id) == id_:
+                payment_list.append(payment)
+    total = order.subtotal_amount + (country.shipping_cost *
+                                     order.subtotal_amount)
+    order.shipping_info = shipping
+    order.payments = payment_list
+    order.last_payment_date = [] if payment_list == [] else max(
+        [last.payment_date for last in payment_list])
+    order.total = int(total)
+    order.user_info = user
+    return [order]
+
+
+def searching(key):
+    """Function to search the key of the locations
+    if the key is a country, a state, or a city
+
+    Args:
+        key (str): location name
+
+    Returns:
+        int: id of the location found
+    """
+    search_key = 0
+    countries = storage.all('Country')
+    for country in countries:
+        if country.country_name == key:
+            search_key = country.id_
+            break
+    if search_key == 0:
+        states = storage.all('State')
+        for state in states:
+            if state.state_name == key:
+                search_key = state.id_
+                break
+    if search_key == 0:
+        cities = storage.all('City')
+        for city in cities:
+            if city.city_name == key:
+                search_key = city.id_
+                break
+    return search_key
+
+
 @router.get('/{order}')
 async def get_order(order: str):
     """This endpoint is used to get different
@@ -35,36 +97,6 @@ async def get_order(order: str):
         """
         return [get_one(order)[0] for order in order_list.split(',')]
 
-    def get_one(id_):
-        """ This method is to request a single order ids separated
-        by id.
-
-        Args:
-            id ([str]): [order id]
-
-        Returns:
-            [List]: [the information about the order requested]
-        """
-        order = storage.one('Order', id_)
-        user = storage.one('User', order.user_id)
-        shipping = storage.one('Shipping', order.shipping_id)
-        country = storage.one('Country', shipping.country_id)
-        payments = storage.all('Payment')
-        payment_list = []
-        if payments != None:
-            for payment in payments:
-                if str(payment.order_id) == id_:
-                    payment_list.append(payment)
-        total = order.subtotal_amount + (country.shipping_cost *
-                                         order.subtotal_amount)
-        order.shipping_info = shipping
-        order.payments = payment_list
-        order.last_payment_date = [] if payment_list == [] else max(
-            [last.payment_date for last in payment_list])
-        order.total = int(total)
-        order.user_info = user
-        return [order]
-
     def get_order_by_user_id(id_):
         """ This method is to request all the orders
         that belong to the same user id requested.
@@ -76,7 +108,7 @@ async def get_order(order: str):
             [List]: [all the orders requested]
         """
         data = storage.all('Order')
-        if data != None:
+        if data is not None:
             orders = [str(x.id_) for x in data if x.user_id == id_]
             return get_all(','.join(orders))
         return None
@@ -128,24 +160,7 @@ async def get_order_by_key(key: str):
         [dict]: [successfully message and the information
                  of the Order created]
     """
-    search_key = 0
-    countries = storage.all('Country')
-    for country in countries:
-        if country.country_name == key:
-            search_key = country.id_
-            break
-    if search_key == 0:
-        states = storage.all('State')
-        for state in states:
-            if state.state_name == key:
-                search_key = state.id_
-                break
-    if search_key == 0:
-        cities = storage.all('City')
-        for city in cities:
-            if city.city_name == key:
-                search_key = city.id_
-                break
+    search_key = searching(key)
     if search_key == 0:
         return {'key': '{} Not Found'.format(key)}
     shippings = storage.all('Shipping')
@@ -188,4 +203,4 @@ def get_all_orders():
     Returns:
         [dict]: [all the information of the Orders]
     """
-    return [obj for obj in storage.all('Order')]
+    return list(storage.all('Order'))

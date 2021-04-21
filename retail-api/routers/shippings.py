@@ -10,14 +10,14 @@ router = APIRouter(prefix="/shippings", tags=['Shippings'])
 
 
 @router.get('/')
-def create_shipping():
+def get_shipping():
     """This endpoint is used to select all the
     Shippings in the Database.
 
     Returns:
         [List]: [information about all shippings in the database]
     """
-    return [obj for obj in storage.all('Shipping')]
+    return list(storage.all('Shipping'))
 
 
 @router.post('/')
