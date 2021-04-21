@@ -16,3 +16,11 @@ class PaymentModel(BaseModel):
     class Config:
         """Config to use orm mode"""
         orm_mode = True
+
+    def print_dict(self):
+        """Method to print the dictionary"""
+        print(self.__dict__)
+
+    def to_dict(self):
+        """Method to convert the class in a dictionary"""
+        return self.__dict__
