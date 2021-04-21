@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This module has the class Shipping."""
-from .base import Base
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
+from .base import Base
 
 
 class Shipping(Base):

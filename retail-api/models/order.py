@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """This module has the class Order."""
-from .base import Base
+import datetime
 from sqlalchemy import Column, Float, Integer
 from sqlalchemy import Date, Boolean, String, ForeignKey
 from sqlalchemy.orm import relationship
-import datetime
+from .base import Base
 
 
 class Order(Base):
