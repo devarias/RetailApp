@@ -1,0 +1,41 @@
+.logo {
+  float: left;
+  width: 80px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background-image: url('https://i.pinimg.com/originals/d0/ad/ee/d0adeea9e1125987e9a92fc50d1fba7f.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.site-layout-background.header-container {
+  text-align: center;
+  padding: 0;
+}
+.site-layout-background.header-container {
+  font-size: 24px;
+  color: white;
+}
+.lay {
+  min-height: 100vh;
+}
+.top {
+  margin: 0 16px;
+}
+.space {
+  margin: 16px 0;
+}
+div.site-layout-background.container {
+  padding: 24px;
+  min-height: 360px;
+}
+
+.ant-layout-footer {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 5%;
+}

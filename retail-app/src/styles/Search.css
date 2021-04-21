@@ -1,0 +1,18 @@
+.filters {
+  margin: 0 10px 10px 10px;
+}
+.filters.btn {
+  background: #014381;
+  color: white;
+}
+.filters.btn:hover,
+.filters.btn-clear:hover,
+.filters.btn:focus {
+  background: #1890ff;
+  color: white;
+}
+.filters.btn-clear,
+.filters.btn-clear:focus {
+  background: #014381;
+  color: white;
+}
