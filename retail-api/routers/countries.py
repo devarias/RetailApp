@@ -15,4 +15,4 @@ def get_countries():
     Returns:
         [List]: [information about all countries in the database]
     """
-    return [obj for obj in storage.all('Country')]
+    return list(storage.all('Country'))

@@ -14,4 +14,4 @@ def get_states():
     Returns:
         [List]: [information about all states in the database]
     """
-    return [obj for obj in storage.all('State')]
+    return list(storage.all('State'))

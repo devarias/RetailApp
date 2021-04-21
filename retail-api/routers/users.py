@@ -18,7 +18,7 @@ def get_users():
         [List]: [information about all users in the database]
     """
     data = storage.all('User')
-    return [obj for obj in data] if data != None else None
+    return list(data) if data is not None else None
 
 
 @router.get('/{id_}')

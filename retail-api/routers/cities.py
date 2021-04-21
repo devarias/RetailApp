@@ -15,4 +15,4 @@ def get_cities():
     Returns:
         [List]: [information about all cities in the database]
     """
-    return [obj for obj in storage.all('City')]
+    return list(storage.all('City'))
