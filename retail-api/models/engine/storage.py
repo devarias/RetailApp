@@ -67,8 +67,8 @@ class DBStore:
         session_factory = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False,
                                        autoflush=True)
-        Session = scoped_session(session_factory)
-        self.__session = Session
+        session = scoped_session(session_factory)
+        self.__session = session
 
     def close(self):
         """call remove() method on the private session attribute"""
