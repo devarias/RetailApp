@@ -13,8 +13,8 @@ Select the option to start
 read -r option
 if [[ $option -eq 1 ]]
 then
-    sudo mysql -uroot -hlocalhost -p < retail-api/sql/setupMySQL.sql
-    sudo mysql -uretail_user -hlocalhost -pPassword123#@! &>/dev/null < retail-api/sql/retailDatabase.sql
+    mysql -uroot -hlocalhost -p < sudo retail-api/sql/setupMySQL.sql
+    mysql -uretail_user -hlocalhost -pPassword123#@! &>/dev/null < sudo retail-api/sql/retailDatabase.sql
     start
 else
     start
