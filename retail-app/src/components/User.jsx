@@ -13,6 +13,10 @@ function User(props) {
   const [status, setStatus] = useState(false);
   const [form] = Form.useForm();
   const { confirm } = Modal;
+  const { styling } = props;
+  const { layout, req } = styling;
+  const { labelCol, wrapperCol } = layout;
+  const { required, tooltip } = req;
   const sendUser = () => {
     createUser(firstName, lastName, govId, email, company);
     form.resetFields();
@@ -53,15 +57,30 @@ function User(props) {
   };
   return (
     <div className='form-container'>
-      <Form form={form} {...props.styling.layout} name='control-ref'>
-        <Form.Item name='First Name' label='First Name' {...props.styling.req}>
+      <Form
+        form={form}
+        labelCol={labelCol}
+        wrapperCol={wrapperCol}
+        name='control-ref'
+      >
+        <Form.Item
+          name='First Name'
+          label='First Name'
+          required={required}
+          tooltip={tooltip}
+        >
           <Input
             value={firstName}
             placeholder='John'
             onChange={(e) => setFirstName(e.target.value)}
           />
         </Form.Item>
-        <Form.Item name='Last Name' label='Last Name' {...props.styling.req}>
+        <Form.Item
+          name='Last Name'
+          label='Last Name'
+          required={required}
+          tooltip={tooltip}
+        >
           <Input
             value={lastName}
             placeholder='Doe'
@@ -71,7 +90,8 @@ function User(props) {
         <Form.Item
           name='Government Identification'
           label='Gov ID'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Input
             value={govId}
@@ -94,7 +114,7 @@ function User(props) {
             placeholder='Umbrella Corporation'
           />
         </Form.Item>
-        <Form.Item className='btn' {...props.styling.tailLayout}>
+        <Form.Item className='btn' wrapperCol={{ offset: 10, span: 16 }}>
           <Button
             className='submit-btn'
             type='primary'

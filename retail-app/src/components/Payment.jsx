@@ -16,6 +16,10 @@ function Payment(props) {
   const { confirm } = Modal;
   const [form] = Form.useForm();
   const { Option } = Select;
+  const { styling } = props;
+  const { layout, req } = styling;
+  const { labelCol, wrapperCol } = layout;
+  const { required, tooltip } = req;
   const methods = ['Credit Card', 'Debit Card', 'Cash'];
   const sendPayment = () => {
     createPayment(orderId, type, payment);
@@ -32,7 +36,8 @@ function Payment(props) {
     getData();
   }, []);
   async function onChangeUser(value) {
-    const data = await getDataList(`orders/${value}`);
+    const endpoint = 'orders/' + value;
+    const data = await getDataList(endpoint);
     if (data === null) {
       setOrders([]);
     } else {
@@ -77,11 +82,17 @@ function Payment(props) {
 
   return (
     <div className='form-container'>
-      <Form form={form} {...props.styling.layout} name='control-ref'>
+      <Form
+        form={form}
+        labelCol={labelCol}
+        wrapperCol={wrapperCol}
+        name='control-ref'
+      >
         <Form.Item
           name='Select an User'
           label='Select User'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -102,7 +113,8 @@ function Payment(props) {
         <Form.Item
           name='Select an Order'
           label='Select an Order'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -128,7 +140,8 @@ function Payment(props) {
         <Form.Item
           name='Select Type Payment'
           label='Select Type Payment'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -146,10 +159,15 @@ function Payment(props) {
             ))}
           </Select>
         </Form.Item>
-        <Form.Item name='Pay Amount' label='Pay Amount' {...props.styling.req}>
+        <Form.Item
+          name='Pay Amount'
+          label='Pay Amount'
+          required={required}
+          tooltip={tooltip}
+        >
           <Input value={payment} onChange={handleAmount} />
         </Form.Item>
-        <Form.Item className='btn' {...props.styling.tailLayout}>
+        <Form.Item className='btn' wrapperCol={{ offset: 10, span: 16 }}>
           <Button
             className='submit-btn'
             type='primary'

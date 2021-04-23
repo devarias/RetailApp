@@ -16,6 +16,10 @@ function Address(props) {
   const [shippingAddress, setShippingAddress] = useState('');
   const [status, setStatus] = useState(false);
   const { confirm } = Modal;
+  const { styling } = props;
+  const { layout, req } = styling;
+  const { labelCol, wrapperCol } = layout;
+  const { required, tooltip } = req;
   const [form] = Form.useForm();
   const { Option } = Select;
   const sendShipping = () => {
@@ -75,11 +79,17 @@ function Address(props) {
   };
   return (
     <div className='form-container'>
-      <Form form={form} {...props.styling.layout} name='control-ref'>
+      <Form
+        form={form}
+        labelCol={labelCol}
+        wrapperCol={wrapperCol}
+        name='control-ref'
+      >
         <Form.Item
           name='Select a User'
           label='Select User'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -100,7 +110,8 @@ function Address(props) {
         <Form.Item
           name='Select Country'
           label='Select Country'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -121,7 +132,8 @@ function Address(props) {
         <Form.Item
           name='Select State'
           label='Select State'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -142,7 +154,8 @@ function Address(props) {
         <Form.Item
           name='Select City'
           label='Select City'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -163,11 +176,12 @@ function Address(props) {
         <Form.Item
           name='Address Line'
           label='Address Line'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Input value={shippingAddress} onChange={handleChange} />
         </Form.Item>
-        <Form.Item className='btn' {...props.styling.tailLayout}>
+        <Form.Item className='btn' wrapperCol={{ offset: 10, span: 16 }}>
           <Button
             className='submit-btn'
             type='primary'

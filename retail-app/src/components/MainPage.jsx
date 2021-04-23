@@ -17,7 +17,6 @@ function MainPage() {
   const [view, setView] = useState(0);
   const styling = {
     layout: { labelCol: { span: 7 }, wrapperCol: { span: 10 } },
-    tailLayout: { wrapperCol: { offset: 10, span: 16 } },
     req: {
       required: true,
       tooltip: {

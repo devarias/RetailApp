@@ -17,6 +17,10 @@ function Order(props) {
   const [total, setTotal] = useState('');
   const [status, setStatus] = useState(false);
   const { confirm } = Modal;
+  const { styling } = props;
+  const { layout, req } = styling;
+  const { labelCol, wrapperCol } = layout;
+  const { required, tooltip } = req;
   const [form] = Form.useForm();
   const { Option } = Select;
   const sendOrder = () => {
@@ -87,11 +91,17 @@ function Order(props) {
 
   return (
     <div className='form-container'>
-      <Form form={form} {...props.styling.layout} name='control-ref'>
+      <Form
+        form={form}
+        labelCol={labelCol}
+        wrapperCol={wrapperCol}
+        name='control-ref'
+      >
         <Form.Item
           name='Select a User'
           label='Select User'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -112,7 +122,8 @@ function Order(props) {
         <Form.Item
           name='Select an Address'
           label='Select an Address'
-          {...props.styling.req}
+          required={required}
+          tooltip={tooltip}
         >
           <Select
             showSearch
@@ -136,7 +147,12 @@ function Order(props) {
         <Form.Item label='Country'>
           <Input label='Country' value={country} disabled />
         </Form.Item>
-        <Form.Item name='Order Cost' label='Order Cost' {...props.styling.req}>
+        <Form.Item
+          name='Order Cost'
+          label='Order Cost'
+          required={required}
+          tooltip={tooltip}
+        >
           <Input value={orderCost} onChange={handleCost} />
         </Form.Item>
         <Form.Item label='Shipping Taxes'>
@@ -145,7 +161,7 @@ function Order(props) {
         <Form.Item label='Total'>
           <Input label='cost' value={total} disabled />
         </Form.Item>
-        <Form.Item className='btn' {...props.styling.tailLayout}>
+        <Form.Item className='btn' wrapperCol={{ offset: 10, span: 16 }}>
           <Button
             className='submit-btn'
             type='primary'
