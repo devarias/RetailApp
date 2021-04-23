@@ -12,14 +12,14 @@ CREATE TABLE IF NOT EXISTS users(
     PRIMARY KEY (id_)
 );
 
-CREATE TABLE countries(
+CREATE TABLE IF NOT EXISTS countries(
     id_ INT,
     country_name VARCHAR(50) NOT NULL,
     shipping_cost FLOAT(2,2) NOT NULL,
     PRIMARY KEY (id_)
 );
 
-CREATE TABLE states(
+CREATE TABLE IF NOT EXISTS states(
     id_ INT,
     state_name VARCHAR(50) NOT NULL,
     country_id INT NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE states(
     PRIMARY KEY (id_)
 );
 
-CREATE TABLE cities(
+CREATE TABLE IF NOT EXISTS cities(
     id_ INT,
     city_name VARCHAR(50) NOT NULL,
     state_id INT NOT NULL,
