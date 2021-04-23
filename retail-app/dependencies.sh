@@ -4,3 +4,5 @@ npm i -S react-router-dom
 npm i -S antd
 npm i -S axios
 npm i -S react-highlight-words
+npm i -S react-scripts
+npm i -S react-dom
