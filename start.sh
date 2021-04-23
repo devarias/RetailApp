@@ -23,7 +23,7 @@ then
     echo "Please provide the password to access to mysql"
     mysql -uroot -hlocalhost -p < retail-api/sql/setupMySQL.sql
     mysql -uretail_user -hlocalhost -pPassword123#@! &>/dev/null < retail-api/sql/retailDatabase.sql
-    start $option
+    start "${option}"
 else
-    start $option
+    start "${option}"
 fi
