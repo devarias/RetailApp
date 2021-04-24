@@ -1,8 +1,9 @@
-
-
-Web application to manage a retail business, where you can create users, add address to the users, create orders to the users, and create payments. The web application have a view to search and filter data from the database.
-
 # RetailApp
+<p align="center">
+  <img src="https://www.code-inspector.com/project/21669/score/svg">
+  <img src="https://www.code-inspector.com/project/21669/status/svg">
+</p>
+
 <p align="center">
   <img src="https://wpforms.com/wp-content/uploads/2018/08/invoicing-software-for-your-wordpress-order-forms.jpg">
 </p>
