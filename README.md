@@ -59,6 +59,7 @@ Web application to manage a retail business, where you can create users, add add
   * The option number `1` is to create the Database, create the user in MySQL and install all the dependencies and the python requirements to run the application, after installation will start the RESTful API and the Web Application.
   * Remember we are going to create the DataBase and the users, we will do under the `root` user, then the program will ask you for your mysql password.
   * The option number `2` is to start the RESTful API and the Web Application, because you have the database created and everything created.
+  * To exit from the web application in the terminal just press `Ctrl + C`
 
 # How to use
 
@@ -133,7 +134,49 @@ In this section you can add a shipping address to a User.
 
 * ## Create an Order
 
+Now you can add orders to the users, selecting the user and its shipping address.
+When you select the address it will show you automatically the State, Country and Shipping taxes.
+And if you are typing the cost of the order, you can see the total including the taxes.
 
+* Select User. (required)
+* Select an Address. (required)
+* State.
+* Country.
+* Order Cost. (required)
+* Shipping Taxes.
+* Total
+
+<p align="center">
+  <img src="https://i.imgur.com/VOeVQxP.png">
+</p>
+
+* ## Create a Payment
+
+Now you can add payments to the order's users, selecting the user and its order.
+When you select the order it will show you automatically the Total Cost of the Order.
+Also you have to select the Type of Payment, Credit Card, Debit Card, or Cash.
+
+* Select User. (required)
+* Select an Order. (required)
+* Total.
+* Select Type Payment. (required)
+* Pay Amount. (required)
+
+<p align="center">
+  <img src="https://i.imgur.com/4HKUdfh.png">
+</p>
+
+* ## Make a Search
+
+<p align="center">
+  <img src="https://i.imgur.com/SdshSj3.png">
+</p>
+
+Here you can filter by Order ID, or by user name, or by shipping address, also you can filter by a date range or by location.
+
+<p align="center">
+  <img src="https://i.imgur.com/PMjvkgi.png">
+</p>
 
 
 # Routes and Methods
