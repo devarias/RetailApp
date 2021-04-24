@@ -56,21 +56,25 @@ function Search() {
 
   async function getInfo(endpoint) {
     let orders = await getDataList(endpoint);
-    orders = orders.map((order) => order.id_);
-    const info = await getDataList('orders/' + orders.toString());
-    const sourceData = info.map((order) => {
-      return {
-        orderId: order.id_,
-        user: order.user_info.first_name + ' ' + order.user_info.last_name,
-        address: order.shipping_info.shipping_address,
-        orderDate: order.order_date,
-        lastPaymentDate: order.last_payment_date,
-        paid: order.paid ? 'Done' : 'No',
-        subtotal: currencyFormat(order.subtotal_amount),
-        total: currencyFormat(order.total),
-      };
-    });
-    setData(sourceData);
+    if (orders !== undefined) {
+      orders = orders.map((order) => order.id_);
+      const info = await getDataList('orders/' + orders.toString());
+      const sourceData = info.map((order) => {
+        return {
+          orderId: order.id_,
+          user: order.user_info.first_name + ' ' + order.user_info.last_name,
+          address: order.shipping_info.shipping_address,
+          orderDate: order.order_date,
+          lastPaymentDate: order.last_payment_date,
+          paid: order.paid ? 'Done' : 'No',
+          subtotal: currencyFormat(order.subtotal_amount),
+          total: currencyFormat(order.total),
+        };
+      });
+      setData(sourceData);
+    } else {
+      setData([]);
+    }
   }
 
   function filterByDate() {

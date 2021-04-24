@@ -31,6 +31,8 @@ function Address(props) {
       let data = await getDataList('users/all');
       if (data !== null) {
         setUserList(data);
+      } else {
+        setUserList([]);
       }
       data = await getDataList('countries');
       setCountryList(data);
@@ -72,6 +74,11 @@ function Address(props) {
       onOk() {
         setTimeout(async () => {
           sendShipping();
+          setUserId('');
+          setCountryId('');
+          setStateId('');
+          setCityId('');
+          setShippingAddress('');
           Modal.success({ content: 'Address was created successfully.' });
         }, 500);
       },

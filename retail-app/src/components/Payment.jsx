@@ -38,10 +38,10 @@ function Payment(props) {
   async function onChangeUser(value) {
     const endpoint = 'orders/' + value;
     const data = await getDataList(endpoint);
-    if (data === null) {
-      setOrders([]);
-    } else {
+    if (data.error !== 'Order not found') {
       setOrders(data);
+    } else {
+      setOrders([]);
     }
     setTotal('');
   }
