@@ -37,6 +37,7 @@ This README provides guidelines to install, and use the Retail API and the Web A
 # Getting Started
 
 Web application to manage a retail business, where you can create users, add address to the users, create orders to the users, and create payments. The web application have a view to search and filter data from the database.
+This project was based on the assessment by Holberton School, [here](https://www.notion.so/Software-Developer-Assessment-Test-10d5fa07ff2547c6831bf7653040b790) you can find more information about.
 
 # Prerequisites
 
