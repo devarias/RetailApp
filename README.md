@@ -14,6 +14,13 @@ This README provides guidelines to install, and use the Retail API and the Web A
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running](#running)
+- [How to Use](#how-to-use)
+  - [Login](#login)
+  - [Create an User](#create-an-user)
+  - [Create a Shipping Address](#create-a-shipping-address)
+  - [Create an Order](#create-an-order)
+  - [Create a Payment](#create-a-payment)
+  - [Make a Search](#make-a-search)
 - [Routes and Methods](#routes-and-methods)
   - [Users Routes](#users-routes)
   - [Shippings Routes](#shippings-routes)
@@ -22,7 +29,6 @@ This README provides guidelines to install, and use the Retail API and the Web A
   - [Country Route](#country-route)
   - [State Route](#state-route)
   - [City Route](#city-route)
-- [Login](#login)
 - [Built With](#built-with)
 - [Author](#author)
 
@@ -35,6 +41,7 @@ Web application to manage a retail business, where you can create users, add add
 * `mysql` => v8.0.23
 * `npm` => v6.14.4
 * `node` => v10.19.0
+* `python` => v3.8.5
 
 # Installation
 
@@ -52,6 +59,82 @@ Web application to manage a retail business, where you can create users, add add
   * The option number `1` is to create the Database, create the user in MySQL and install all the dependencies and the python requirements to run the application, after installation will start the RESTful API and the Web Application.
   * Remember we are going to create the DataBase and the users, we will do under the `root` user, then the program will ask you for your mysql password.
   * The option number `2` is to start the RESTful API and the Web Application, because you have the database created and everything created.
+
+# How to use
+
+* ## Login
+
+To log in in the web application use the next credentials:
+
+  * email: `react.fastapi.app@gmail.com`
+  * password: `Password123`
+
+<p align="center">
+  <img src="https://i.imgur.com/ojEJZ2k.png">
+</p>
+
+Once you are logged in, you are in the Home with a Navigate Side Bar with the next options:
+
+* Users: You can create Users.
+* Addresses: You can add to a specific user a shipping address.
+* Orders: You can select an user and create an order to it.
+* Payments: You can select the user and the order to create a payment.
+* Search: You have a table to search by Order ID, by name, by address, by a range date, and by location.
+* Logout: Logout of the web application.
+
+<p align="center">
+  <img src="https://i.imgur.com/jcH0vmY.png">
+</p>
+
+* ## Create an User
+
+<p align="center">
+  <img src="https://i.imgur.com/2aIB10M.png">
+</p>
+
+Here you can create an User, the fields required have the exclamation mark next to the label.
+
+* First Name. (Required)
+* Last Name. (Required)
+* Gov ID. (Required)
+* email.
+* Company
+
+Notice if you don't fill out the required fields the submit button will stay disabled. Also you can reset the fields with the button Reset.
+When you click the submit button will appear a modal box asking to confirm the data given.
+
+<p align="center">
+  <img src="https://i.imgur.com/0z9h4h7.png">
+</p>
+
+If you confirm the data, a successfully message will show up.
+
+<p align="center">
+  <img src="https://i.imgur.com/gf5wJEq.png">
+</p>
+
+* ## Create a Shipping Address
+
+<p align="center">
+  <img src="https://i.imgur.com/qFoJUzb.png">
+</p>
+
+In this section you can add a shipping address to a User.
+
+* Select User. (required)
+* Select Country. (required)
+* Select State. (required)
+* Select City. (required)
+* Address Line. (required)
+
+<p align="center">
+  <img src="https://i.imgur.com/e1Vp1ee.png">
+</p>
+
+* ## Create an Order
+
+
+
 
 # Routes and Methods
 
@@ -116,7 +199,6 @@ Web application to manage a retail business, where you can create users, add add
 | `api/cities` | `get`  | To get all the data of the cities |
 <br />
 
-# Login
 
 
 # Built With
