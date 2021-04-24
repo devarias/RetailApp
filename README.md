@@ -31,6 +31,7 @@ This README provides guidelines to install, and use the Retail API and the Web A
   - [State Route](#state-route)
   - [City Route](#city-route)
 - [Built With](#built-with)
+- [Video Demo](#video-demo)
 - [Author](#author)
 
 # Getting Started
@@ -61,6 +62,7 @@ Web application to manage a retail business, where you can create users, add add
   * Remember we are going to create the DataBase and the users, we will do under the `root` user, then the program will ask you for your mysql password.
   * The option number `2` is to start the RESTful API and the Web Application, because you have the database created and everything created.
   * To exit from the web application in the terminal just press `Ctrl + C`
+  * To exit from the virtual environment just type `deactivate`
 
 # How to use
 
@@ -254,6 +256,10 @@ Here you can filter by Order ID, or by user name, or by shipping address, also y
   * npm
   * Bash
   * Auth0
+
+# Demo Video
+
+You can find the demo video [here](https://youtu.be/42OnAwutGCw)
 
 # Author
 
