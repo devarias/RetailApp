@@ -31,7 +31,11 @@ function Order(props) {
   useEffect(() => {
     const callData = async () => {
       const data = await getDataList('users/all');
-      setUserList(data);
+      if (data !== null) {
+        setUserList(data);
+      } else {
+        setUserList([]);
+      }
     };
     callData();
   }, []);
