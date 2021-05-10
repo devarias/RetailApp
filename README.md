@@ -2,6 +2,7 @@
 <p align="center">
   <img src="https://www.code-inspector.com/project/21669/score/svg">
   <img src="https://www.code-inspector.com/project/21669/status/svg">
+  <div align="center">more details about <a href="https://frontend.code-inspector.com/public/project/21669/RetailApp/dashboard">Code Quality</a></div>
 </p>
 
 <p align="center">
